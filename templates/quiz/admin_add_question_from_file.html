@@ -1,68 +1,52 @@
 {% extends 'quiz/adminbase.html' %}
 {% load widget_tweaks %}
 {% block content %}
-
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script>
-
-        function assign_data(){
-            console.log('heree');
-            document.getElementById("data").value = JSON.stringify({{data}});
-
-        }
-
-
-    </script>
-    <style>
+  <style>
   a:link {
         text-decoration: none;
       }
-    </style>
-
-
+    
+  </style>
 </head>
 
-
 <div style="margin-left: 95px;">
-    <h2>Upload File</h2>
-    <form method="post" enctype="multipart/form-data">
-        {%csrf_token%}
-        <input class="btn btn-info" type="file" name="document"><br>
-        <button class="btn btn-info" type="submit">Upload File</button>
-    </form>
+  <h2>Upload File</h2>
+  <form method="post" enctype="multipart/form-data">
+  {%csrf_token%}
+  <input class="btn btn-info" type="file" name="document"><br>
+  <button class="btn btn-info" type="submit">Upload File</button>
+  </form>
 </div>
-<br>
+  <br>
 
-<form method="POST" style="margin:100px; margin-top: 0px; text-align: left;">
+  <form method="Post">
     {%csrf_token%}
     {% for question, option1, option2, option3, option4, answer in xyz %}
-    <div style="text-align: justify; text-justify: inter-word;">
-        <p></p>Question{{forloop.counter}}: {{ question }}</p>
-        <p>Option1:{{option1}}</p>
-        <P>Option2: {{option2}}</P>
-        <p>Opption3: {{option3}}</p>
-        <p>Option4: {{option4}}</p>
-        <p>Correct Answer: {{answer}}</p>
-    </div>
+    <div class="container" style="padding-left: 100px;">
+      Question {{forloop.counter}}: {{ question }}
+      <ol type="A">
+       <li>{{option1}} </li>
+        <li>{{option2}}</li>
+        <li>{{option3}}</li>
+        <li>{{option4}}</li>
+        Correct {{answer}} 
+      </ol>
+      <br>    
+      </div>
     {% endfor %}
-</form>
+  </form>
 
-
-<form method="POST">
-    <input type="hidden" id="data" name="data" value="{{data}}">
+  <form method="POST" >
     <div style="margin-left: 95px;">
-        <label for="question">Course</label>
-        {% render_field questionForm.courseID|attr:'required:true' class="form-control" %}
-        <br>
+      <label for="question">Course</label>
+        {% render_field questionForm.courseID|attr:'required:true' class="form-control"  %}
+          <br>
     </div>
-    <button style="margin-left: 95px;" class="btn btn-info" name="file_submit">Submit File
-    </button>
+  <button style="margin-left: 95px;" class="btn btn-info"  name="file_submit">Submit File</button>
 </form>
-
-
 {% endblock content %}

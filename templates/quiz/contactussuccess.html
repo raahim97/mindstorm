@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <style>
+    #bg{
+  height: 30%;
+    width: 100%;
+    background-image: url('{% static "image/learn.jpg" %}');
+  }
+  </style>
+
+</head>
+
+<body id="bg">
+
+  {% include "quiz/navbar.html" %}
+  <br><br>
+  <div>
+    <br><br><br>
+    <h1 class="display-4" style="text-align: center;">Your message sent successfully !</h1><br>
+    <p class="lead">We will respond to your feedback soon</p><br>
+    <hr class="my-4"><br>
+    <p>Check other features of website !</p><br>
+    <p class="lead"><br>
+      <a class="btn btn-primary btn-info" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  <br><br>
+  <br><br>
+  {% include "quiz/footer.html" %}
+</body>
+
+</html>

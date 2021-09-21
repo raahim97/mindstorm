@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+
+  <style media="screen">
+    .alert {
+      margin: 0px;
+    }
+    .sortable { 
+      margin: 0; padding: 0; 
+      width: 100%; 
+    }
+    .sortable li { 
+      margin: 0 3px 3px 3px; 
+      padding: 0.4em; padding-left: 
+      1.5em; font-size: 
+      1.4em; height: 18px; 
+      list-style-type: disc; 
+      margin-left: 30px; 
+    }
+    .sortable li span { 
+      position: absolute; 
+      margin-left: -1.3em; 
+    }
+    #bg{
+    height: 30%;
+    width: 100%;
+    background-image: url('{% static "image/learn.jpg" %}');
+  }
+  </style>
+
+  <title></title>
+</head>
+
+<body>
+  {% include "quiz/navbar.html" %}
+  <br><br>
+  <div id="bg">
+  <center>
+    <h1 class='display-4 d-none d-sm-block' style="color:rgb(23, 162, 184); padding-top: 20px;">Learn</h1>
+  </center>
+  <div style="margin-bottom: 0px;margin-top: 0px;">
+    <ul class="sortable">
+      <p class="display-4 d-none d-sm-block" style="font-size: x-large; text-align:center; padding-left: 20px; text-decoration:underline;">Programming Fundamentals</p>
+      <li style="font-size: small;"> C++ is an extension of the programming
+        language C, a product of AT&T Bell Labs from the early 1970s. C was developed to write the Unix
+        operating system, and C is widely used for systems-level software and embedded systems development. 
+        C++ is widely used in industry for commercial software development. It is an industrial strength 
+        programming language used for developing complex systems in business, science, and engineering. Examples
+        of software written in C++ include Microsoft Windows 8, Microsoft Office, Mac OS X, and Adobe Creative
+        Suite.</li>
+      </div><br><br>
+      <a href="https://tfetimes.com/wp-content/uploads/2015/04/progcpp.pdf" target="_blank" rel="noopener noreferrer" style="font-style:italic; padding-left:50px;">C++ Helping Material</a>
+
+      <div style="margin-bottom: 0px;margin-top: 0px;">
+        <ul class="sortable">
+          <p class="display-4 d-none d-sm-block" style="font-size: x-large; text-align:center; padding-left: 20px; text-decoration:underline;">Object Oriented Programming</p>
+          <li style="font-size: small;"> Object Oriented programming (OOP) is a programming paradigm that relies on the concept of 
+            classes and objects. It is used to structure a software program into simple, reusable pieces of code blueprints (usually called classes), 
+            which are used to create individual instances of objects. There are many object-oriented programming languages including JavaScript, 
+            C++, Java, and Python. A class is an abstract blueprint used to create more specific, concrete objects. Classes often represent 
+            broad categories, like Car or Dog that share attributes. These classes define what attributes an instance of this type will have, 
+            like color, but not the value of those attributes for a specific object.</li>
+            <br><br>
+          </div>
+          <a href="https://vulms.vu.edu.pk/Courses/CS304/Downloads/CS304_Handouts%20(Updated).pdf" target="_blank" rel="noopener noreferrer" style="font-style:italic; padding-left:50px;">OOP Helping Material</a>
+
+          <div style="margin-bottom: 0px;margin-top: 0px;">
+            <ul class="sortable">
+              <p class="display-4 d-none d-sm-block" style="font-size: x-large; text-align:center; padding-left: 20px; text-decoration:underline;">Data Structures And Algorithms</p>
+              <li style="font-size: small;"> Data Structure is a way of collecting and organising data in such a way that we can perform 
+                operations on these data in an effective way. Data Structures is about rendering data elements in terms of some relationship, 
+                for better organization and storage. For example, we have some data which has, player's name "Keane" and age 26. Here "Keane" 
+                is of String data type and 26 is of integer data type. We can organize this data as a record like Player record, which will 
+                have both player's name and age in it. Now we can collect and store player's records in a file or database as a data structure. 
+                For example: "Keane" 30, "Rooney" 31, "Marcelo" 33. If you are aware of Object Oriented programming concepts, then a class also 
+                does the same thing, it collects different type of data under one single entity. The only difference being, data structures provides 
+                for techniques to access and manipulate data efficiently.</li>
+              </div><br><br><br>
+              <a href="https://www.cs.bham.ac.uk/~jxb/DSA/dsa.pdf" target="_blank" rel="noopener noreferrer" style="font-style:italic; padding-left:50px;">Data Structures and Algorithms Helping Material</a>
+
+          <div style="margin-bottom: 0px;margin-top: 0px;">
+            <ul class="sortable">
+              <p class="display-4 d-none d-sm-block" style="font-size: x-large; text-align:center; padding-left: 20px; text-decoration:underline;">Analysis of Algorithms</p>
+              <li style="font-size: small;"> In theoretical analysis of algorithms, it is common to estimate their complexity in the asymptotic 
+                sense, i.e., to estimate the complexity function for arbitrarily large input. The term "analysis of algorithms" was coined by Donald 
+                Knuth.Algorithm analysis is an important part of computational complexity theory, which provides theoretical estimation for the 
+                required resources of an algorithm to solve a specific computational problem. Most algorithms are designed to work with inputs of 
+                arbitrary length. Analysis of algorithms is the determination of the amount of time and space resources required to execute it.Usually, 
+                the efficiency or running time of an algorithm is stated as a function relating the input length to the number of steps, known as time 
+                complexity, or volume of memory, known as space complexity.</li>
+                    <br><br><br>
+                  </div>
+                  <a href="https://vulms.vu.edu.pk/Courses/CS502/Downloads/CS502%20-%20Fundamentals%20of%20Algorithms%20(Lecture%201%20-%2045).pdf" target="_blank" rel="noopener noreferrer" style="font-style:italic; padding-left:50px;">Analysis of Algorithms Helping Material</a><br><br>
+
+              <p>Explore our Website.</p>
+              <p class="lead">
+                <a class="btn btn-primary btn-info" href="/" role="button">HOME</a><br><br><br>
+              </p>
+            </div>
+          </div>
+            {% include "quiz/footer.html" %}
+          </body>
+
+          </html>

@@ -1,0 +1,30 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Logged Out</title>
+    <style>
+          #bg{
+    height: 30%;
+    width: 100%;
+    background-image: url('{% static "image/learn.jpg" %}');
+  }
+    </style>
+  </head>
+  <body id="bg">
+    {% include "quiz/navbar.html" %}
+    <br><br><br><br><br>
+    <h1 class="display-1 text-info" style="text-align: center;">MindStorm</h1>
+    <p class="display-4 d-none d-sm-block">You have been successfully logged out.</p>
+    <p>Explore our Website.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-info" href="/" role="button">HOME</a>
+    </p>
+
+<br><br><br><br><br>
+<br><br><br>
+{% include "quiz/footer.html" %}
+
+  </body>
+</html>

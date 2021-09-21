@@ -1,0 +1,200 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+
+    </style>
+
+<script>
+
+// timer for quiz
+
+var total_seconds = 60*"{{range}}" ;
+            var minutes = parseInt(total_seconds/60);
+            var seconds = parseInt(total_seconds%60);
+            function countDownTimer(){
+                if(seconds < 10){
+                    seconds= "0"+ seconds ;
+                }if(minutes < 10){
+                    minutes= "0"+ minutes ;
+                }
+                
+            document.getElementById("time").innerHTML
+                = "Time Left :"+minutes+"minutes"+" "+seconds+"seconds";
+                if(total_seconds <= 0){
+                    setTimeout("document.quiz.submit()",1);
+                }else{
+                    total_seconds = total_seconds -1 ;
+                    minutes = parseInt(total_seconds/60);
+                    seconds = parseInt(total_seconds%60);
+                    setTimeout("countDownTimer()",1000);
+                }
+            }
+        setTimeout("countDownTimer()",1000);
+
+    // window.onload = function () {
+    //     var fiveMinutes = 60 * "{{range}}",
+    //         display = document.querySelector('#time');
+    //     startTimer(fiveMinutes, display);
+    // };
+
+// timer code ends here
+
+// Back button warning message
+// for(let i=1; i<5; i++){
+// window.history.pushState({page: 1}, "", "");
+// window.onpopstate = function(event) {
+//   if(event){
+//     // Code to handle back button or prevent from navigation
+//     cnfrm = window.confirm("Are you sure you want to exit? Your quiz will be submitted!");
+//     if(cnfrm==true){
+//         alert("Your Quiz has been submitted!",document.getElementById("done").click()).innerHTML("Time Up");
+//     }
+//   }
+// }}
+
+
+$(document).on("submit", "form", function(event){
+        window.onbeforeunload = null;
+});
+
+
+
+
+// back button code ends here
+
+</script>
+
+</head>
+
+
+<div class="container">
+    
+    <h1 style="text-align: center;">{{course.course_name}}</h1>
+    <p style="float: left; padding-left: 3px;" id="time"></p><br>
+    <form class="form" autocomplete="off" onsubmit="return saveAns()" action="/student/calculate-marks" method="POST">
+        {% csrf_token %}
+        {% for q in questions%}
+        <h3 class="text-info">{{ forloop.counter }}. {{q.question}}</h3><h4 style="text-align: right;">Marks:
+        {{q.marks}}</h4>
+
+        <!-- <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa"> -->
+
+
+        <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}"
+                   value="Option1">
+            <label class="form-check-label" for="option1">
+                {{q.option1}}
+            </label>
+        </div>
+
+
+        <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}"
+                   value="Option2">
+            <label class="form-check-label" for="option2">
+                {{q.option2}}
+            </label>
+        </div>
+
+
+        <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}"
+                   value="Option3">
+            <label class="form-check-label" for="option3">
+                {{q.option3}}
+            </label>
+        </div>
+
+
+        <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option4}}"
+                   value="Option4">
+            <label class="form-check-label" for="option4">
+                {{q.option4}}
+            </label>
+        </div>
+        <br>
+        {% endfor %}
+        <input class="btn btn-info btn-lg" id="done" type="submit" value="Submit">
+    </form>
+</div>
+
+<script> 
+    function saveAns(){  
+        var ele = document.getElementsByTagName('input'); 
+        console.log(ele.length);
+        var count = 0;
+        for(i = 0; i < ele.length; i++) { 
+
+            if(ele[i].type="radio") { 
+                    setCookie(ele[i].name,"",0);
+            }
+        }
+        for(i = 0; i < ele.length; i++) { 
+
+            if(ele[i].type="radio") { 
+                if(ele[i].checked){
+                    console.log(ele[i].checked);
+                    setCookie(ele[i].name,ele[i].value,3);
+                }
+                else {
+                    count++;
+                    console.log('element name', ele[i].name);
+                }
+
+
+
+
+            } 
+        }
+        if (count == ele.length) {
+            console.log('hereeee....');
+            for (i = 0; i < ele.length; i++){
+                if(ele[i].type="radio") {
+                    setCookie(ele[i].name, "", 0);
+                }
+
+            }         
+                    
+        
+        }
+        console.log(count); 
+          
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function delete_cookie( name, path, domain ) {
+  if( get_cookie( name ) ) {
+    document.cookie = name + "=" +
+      ((path) ? ";path="+path:"")+
+      ((domain)?";domain="+domain:"") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+}
+
+function get_cookie(name){
+    return document.cookie.split(';').some(c => {
+        return c.trim().startsWith(name + '=');
+    });
+}
+
+
+
+
+</script>
+
+<br><br><br><br><br><br>
+{% endblock content %}

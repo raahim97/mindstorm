@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+    .sortable { 
+      list-style-type: none;
+      margin: 0; padding: 0; 
+      width: 90%; 
+      padding-left: 350px;
+    }
+    .sortable li { 
+      margin: 0 3px 3px 3px;  
+      list-style-type: disc; 
+      margin-left: 30px; 
+    }
+    .sortable li span { 
+      position: absolute; 
+      margin-left: -1.3em; 
+    }
+    #bg{
+    height: 30%;
+    width: 100%;
+    background-image: url('{% static "image/learn.jpg" %}');
+  }
+  </style>
+
+  <title></title>
+</head>
+
+<body style="background-color: rgb(233, 236, 239);" id="bg">
+
+  {% include "quiz/navbar.html" %}
+  <br><br>
+  <center>
+    <h1 class='display-4 d-none d-sm-block' style="color:rgb(23, 162, 184); padding-top: 20px;">About Us</h1><br>
+  </center>
+  <div style="margin-bottom: 0px;margin-top: 0px;">
+    <ul class="sortable">
+      <li>We provide platform for students to practice questions regarding four of the major programming subjects.</li>
+      <li>Students first needs to signup and create his/her account in order to attempt quiz of any subject.</li>
+      <li>Students can view his/her marks for the regarding quiz right after attempting the quiz.</li>
+      <li>Students will be awarded badges as per their performance in the quizzes to encourage them.</li>
+      <li>Helping material regardin the programming subjects will also be privided to the students to enhance their learning.</li>
+      <li>Track record of every quiz attempted by the student is maintained in order observe his/her performance.</li>
+      <li>Teacher first needs to sign up in order to get access to the functionalities such as adding cource and questions.</li>
+      <li>Admin approves the request of the teacher in order to maintain the security and authenticity of the website</li>
+      <li>After the approval of the request, teacher can add/remove course and questions from any specific cource.</li>
+      <li>Teacher can add course/exam to system and questions to that course.</li>
+      <li>Teacher can view marks of every student to access his/her academic performance.</li>
+      <li>Feedback system is also provided to the students if they have any question regarding the Web Application.</li>
+      <br>
+    </ul>
+    <br>
+    <p>Explore our Website.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-info" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  <br>
+  
+  {% include "quiz/footer.html" %}
+</body>
+
+</html>
